@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "FarmRPG Helper - Non-Official",
+  "description": "The goal of this extension is to help your quality of life in FarmRPG - This is not an official extension, it is fan made.",
+  "version": "1.0",
+  "action": {
+    "default_icon": "robot_farmer.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://farmrpg.com/*"],
+      "js": ["script.js"]
+    }
+  ]
+}
