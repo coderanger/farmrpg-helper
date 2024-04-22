@@ -1,3 +1,13 @@
+function extractNumbers(str) {
+  const regex = /(\d+)\s*\D+(\d+)/;
+  const match = str.match(regex);
+  if (match) {
+      return [parseInt(match[1]), parseInt(match[2])];
+  } else {
+      return ["No match found"];
+  }
+}
+
 function trigger() {
     const questPages = document.querySelectorAll('[data-page="quests"]');
     
@@ -25,13 +35,19 @@ function trigger() {
             requiredItemsContainer.forEach((item) => {
               const itemName = item.textContent.trim();
               const itemString = itemName.replace(/\s+/g, " ").replace(' You have', ':');
+              const quantityOfItemsOnInventory = extractNumbers(itemString)[0];
+              const quantityOfItemsNeeded = extractNumbers(itemString)[1];
     
               const itemTitleElement = linkContent.querySelector('.item-title');
-              if (itemTitleElement) {
-                itemTitleElement.innerHTML += '<br><span style="font-size: 11px; color:yellow;"><strong>' + itemString + '</strong></span>';
-              } else {
+
+              if (!itemTitleElement) {
                 console.warn("Element with class '.item-title' not found in the DOM.");
+                return;
               }
+              
+              if (quantityOfItemsNeeded > quantityOfItemsOnInventory) {
+                itemTitleElement.innerHTML += '<br><span style="font-size: 11px; color:yellow;"><strong>' + itemString + '</strong></span>';
+              }              
             });
           }
         };
