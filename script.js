@@ -14,7 +14,8 @@ function trigger() {
   if (questPages.length > 0) {
     const links = questPages[0].querySelectorAll('a');
     const linkList = Array.from(links)
-      .filter((link) => link.href.includes('quest.php?id='));
+      .filter((link) => link.href.includes('quest.php?id='))
+      .slice(0, 10);
 
     linkList.forEach((linkContent) => {
       setTimeout(() => {
