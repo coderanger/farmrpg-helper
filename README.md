@@ -7,6 +7,7 @@ The extension uses JavaScript to extract the required information from the game'
 ## Features
 
 - [x] Displays a list of items needed for each quest on the quests page.
+- [x] Notify user when they are tagged in chat (still need some improvement on it)
 - [ ] Show active perk on stats for beta/aplha testers
 
 ## Disclaimer
